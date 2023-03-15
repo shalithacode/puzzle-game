@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="styleX4.css" />
+    <title>Puzzle Game</title>
+  </head>
+  <body>
+    <div class="container">
+      <div class="image-container">
+        <h1 id="msg"></h1>
+        <div class="btn-container">
+          <div class="dropdown">
+            <button class="dropbtn">Level</button>
+            <div class="dropdown-content">
+              <a href="index.html">3x</a>
+              <a href="index1.html">4x</a>
+            </div>
+          </div>
+          <button onClick="onReset();">Reset</button>
+        </div>
+
+        <img src="./flower.png" alt="flower" />
+      </div>
+      <div class="puzzle-container">
+        <div id="row1" class="row">
+          <div id="img_11" class="square1" onClick="onSquare(1,1);"></div>
+          <div id="img_12" class="square2" onClick="onSquare(1,2);"></div>
+          <div id="img_13" class="square3" onClick="onSquare(1,3);"></div>
+          <div id="img_14" class="square4" onClick="onSquare(1,4);"></div>
+        </div>
+        <div id="row2" class="row">
+          <div id="img_21" class="square5" onClick="onSquare(2,1);"></div>
+          <div id="img_22" class="square6" onClick="onSquare(2,2);"></div>
+          <div id="img_23" class="square7" onClick="onSquare(2,3);"></div>
+          <div id="img_24" class="square8" onClick="onSquare(2,4);"></div>
+        </div>
+        <div id="row3" class="row">
+          <div id="img_31" class="square9" onClick="onSquare(3,1);"></div>
+          <div id="img_32" class="square10" onClick="onSquare(3,2);"></div>
+          <div id="img_33" class="square11" onClick="onSquare(3,3);"></div>
+          <div id="img_34" class="square12" onClick="onSquare(3,4);"></div>
+        </div>
+        <div id="row4" class="row">
+          <div id="img_41" class="square13" onClick="onSquare(4,1);"></div>
+          <div id="img_42" class="square14" onClick="onSquare(4,2);"></div>
+          <div id="img_43" class="square15" onClick="onSquare(4,3);"></div>
+          <div id="img_44" class="square16" onClick="onSquare(4,4);"></div>
+        </div>
+      </div>
+    </div>
+    <script>
+      let mode = 4;
+    </script>
+    <script src="index.js"></script>
+  </body>
+</html>

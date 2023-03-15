@@ -1,0 +1,319 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+body {
+  background: rgb(0, 0, 0);
+  background: linear-gradient(
+    0deg,
+    rgba(0, 0, 0, 1) 0%,
+    rgba(54, 32, 79, 1) 35%,
+    rgba(125, 43, 150, 1) 69%,
+    rgb(139, 102, 172) 100%
+  );
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  animation: fadeInAnimation ease 3s;
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
+  overflow-x: Hidden;
+}
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+.puzzle-container {
+  order: -1;
+  margin-top: 6px;
+  margin-left: 256px;
+  /* display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 612px; */
+}
+.row {
+  display: table-row;
+}
+.square1,
+.square2,
+.square3,
+.square4,
+.square5,
+.square6,
+.square7,
+.square8,
+.square9,
+.square10,
+.square11,
+.square12,
+.square13,
+.square14,
+.square15,
+.square16 {
+  display: table-cell;
+  width: 159px;
+  height: 159px;
+  box-shadow: inset 0 0 10px #0000005b;
+  background: url("./flower.png");
+  cursor: pointer;
+}
+
+.btn-container {
+  display: flex;
+  gap: 36px;
+  margin: 26px auto;
+  width: 250px;
+  justify-content: center;
+}
+button {
+  background-color: #561c4f;
+  border: 1px white solid;
+  box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.3);
+  transition: all 0.3s ease 0s;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline;
+  font-size: 16px;
+  font-family: Arial, Helvetica, sans-serif;
+  cursor: pointer;
+}
+
+img {
+  border: 1px white solid;
+  width: 250px;
+  height: 250px;
+  display: block;
+}
+button:hover {
+  background-color: #742e6b;
+}
+h1 {
+  color: white;
+  font-family: Arial, Helvetica, sans-serif;
+  text-align: center;
+}
+.square1 {
+  background-position: 0 0;
+}
+
+.square2 {
+  background-position: -159px 0;
+}
+
+.square3 {
+  background-position: -318px 0;
+}
+.square4 {
+  background-position: -447px 0;
+}
+
+.square5 {
+  background-position: 0 -159px;
+}
+
+.square6 {
+  background-position: -159px -159px;
+}
+
+.square7 {
+  background-position: -318px -159px;
+}
+
+.square8 {
+  background-position: -447px -159px;
+}
+
+.square9 {
+  background-position: 0 -318px;
+}
+
+.square10 {
+  background-position: -159px -318px;
+}
+
+.square11 {
+  background-position: -318px -318px;
+}
+
+.square12 {
+  background-position: -447px -318px;
+}
+
+.square13 {
+  background-position: 0 -447px;
+}
+
+.square14 {
+  background-position: -159px -447px;
+}
+
+.square15 {
+  background-position: -318px -447px;
+}
+
+.square16 {
+  background: white;
+  cursor: default;
+}
+
+@media only screen and (max-width: 1124px) {
+  h1 {
+    margin-top: 16px;
+  }
+  .container {
+    display: block;
+    width: 100%;
+  }
+  .image-container {
+    width: 100%;
+  }
+  img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .puzzle-container {
+    margin-top: 36px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 600px;
+  }
+}
+
+@media only screen and (max-width: 716px) {
+  img {
+    display: none;
+  }
+  .square1,
+  .square2,
+  .square3,
+  .square4,
+  .square5,
+  .square6,
+  .square7,
+  .square8,
+  .square9,
+  .square10,
+  .square11,
+  .square12,
+  .square13,
+  .square14,
+  .square15,
+  .square16 {
+    background: url("./flower_mob.png");
+    width: 75px;
+    height: 75px;
+  }
+  .puzzle-container {
+    margin-top: 36px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 300px;
+  }
+
+  .square1 {
+    background-position: 0 0;
+  }
+
+  .square2 {
+    background-position: -75px 0;
+  }
+
+  .square3 {
+    background-position: -150px 0;
+  }
+  .square4 {
+    background-position: -225px 0;
+  }
+
+  .square5 {
+    background-position: 0 -75px;
+  }
+
+  .square6 {
+    background-position: -75px -75px;
+  }
+
+  .square7 {
+    background-position: -150px -75px;
+  }
+
+  .square8 {
+    background-position: -225px -75px;
+  }
+
+  .square9 {
+    background-position: 0 -150px;
+  }
+
+  .square10 {
+    background-position: -75px -150px;
+  }
+
+  .square11 {
+    background-position: -150px -150px;
+  }
+
+  .square12 {
+    background-position: -225px -150px;
+  }
+
+  .square13 {
+    background-position: 0 -225px;
+  }
+
+  .square14 {
+    background-position: -75px -225px;
+  }
+
+  .square15 {
+    background-position: -150px -225px;
+  }
+
+  .square16 {
+    background: white;
+    cursor: default;
+  }
+}
+
+.dropbtn {
+  background-color: #a16ca4;
+  color: white;
+  padding: 16px;
+}
+
+.dropdown {
+  position: relative;
+  display: inline;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f1f1f1;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+}
+
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown-content a:hover {
+  background-color: #ddd;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+.dropdown:hover .dropbtn {
+  background-color: #935a96;
+}
