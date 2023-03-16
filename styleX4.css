@@ -8,7 +8,7 @@ body {
     0deg,
     rgba(0, 0, 0, 1) 0%,
     rgba(54, 32, 79, 1) 35%,
-    rgba(125, 43, 150, 1) 69%,
+    rgba(125, 43, 170, 1) 69%,
     rgb(139, 102, 172) 100%
   );
   background-repeat: no-repeat;
@@ -19,44 +19,39 @@ body {
   overflow-x: Hidden;
 }
 .container {
-  display: flex;
-  align-items: center;
-  justify-content: space-around;
-}
-.puzzle-container {
-  order: -1;
-  margin-top: 6px;
-  margin-left: 256px;
-  /* display: block;
+  /* display: flex;
+  justify-content: center; */
+  /* align-items: center; */
+  display: block;
   margin-left: auto;
   margin-right: auto;
-  width: 612px; */
+  width: 80%;
 }
-.row {
-  display: table-row;
+/* .image-grid {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 80%;
+} */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(4, 0fr);
+
+  width: 480px;
+  margin: 0 auto;
 }
-.square1,
-.square2,
-.square3,
-.square4,
-.square5,
-.square6,
-.square7,
-.square8,
-.square9,
-.square10,
-.square11,
-.square12,
-.square13,
-.square14,
-.square15,
-.square16 {
-  display: table-cell;
-  width: 159px;
-  height: 159px;
-  box-shadow: inset 0 0 10px #0000005b;
-  background: url("./flower.png");
-  cursor: pointer;
+
+.cell {
+  border: 2px solid white;
+  width: 120px;
+  height: 120px;
+  position: relative;
+  order: 0;
+}
+
+img {
+  width: 100%;
+  height: 100%;
 }
 
 .btn-container {
@@ -81,7 +76,7 @@ button {
   cursor: pointer;
 }
 
-img {
+.flower {
   border: 1px white solid;
   width: 250px;
   height: 250px;
@@ -95,69 +90,6 @@ h1 {
   font-family: Arial, Helvetica, sans-serif;
   text-align: center;
 }
-.square1 {
-  background-position: 0 0;
-}
-
-.square2 {
-  background-position: -159px 0;
-}
-
-.square3 {
-  background-position: -318px 0;
-}
-.square4 {
-  background-position: -447px 0;
-}
-
-.square5 {
-  background-position: 0 -159px;
-}
-
-.square6 {
-  background-position: -159px -159px;
-}
-
-.square7 {
-  background-position: -318px -159px;
-}
-
-.square8 {
-  background-position: -447px -159px;
-}
-
-.square9 {
-  background-position: 0 -318px;
-}
-
-.square10 {
-  background-position: -159px -318px;
-}
-
-.square11 {
-  background-position: -318px -318px;
-}
-
-.square12 {
-  background-position: -447px -318px;
-}
-
-.square13 {
-  background-position: 0 -447px;
-}
-
-.square14 {
-  background-position: -159px -447px;
-}
-
-.square15 {
-  background-position: -318px -447px;
-}
-
-.square16 {
-  background: white;
-  cursor: default;
-}
 
 @media only screen and (max-width: 1124px) {
   h1 {
@@ -167,7 +99,7 @@ h1 {
     display: block;
     width: 100%;
   }
-  .image-container {
+  .side-container {
     width: 100%;
   }
   img {
@@ -183,99 +115,17 @@ h1 {
   }
 }
 
-@media only screen and (max-width: 716px) {
-  img {
-    display: none;
-  }
-  .square1,
-  .square2,
-  .square3,
-  .square4,
-  .square5,
-  .square6,
-  .square7,
-  .square8,
-  .square9,
-  .square10,
-  .square11,
-  .square12,
-  .square13,
-  .square14,
-  .square15,
-  .square16 {
-    background: url("./flower_mob.png");
-    width: 75px;
-    height: 75px;
-  }
-  .puzzle-container {
-    margin-top: 36px;
-    margin-left: auto;
-    margin-right: auto;
-    width: 300px;
+@media only screen and (max-width: 550px) {
+  .grid {
+    width: 360px;
   }
 
-  .square1 {
-    background-position: 0 0;
-  }
-
-  .square2 {
-    background-position: -75px 0;
-  }
-
-  .square3 {
-    background-position: -150px 0;
-  }
-  .square4 {
-    background-position: -225px 0;
-  }
-
-  .square5 {
-    background-position: 0 -75px;
-  }
-
-  .square6 {
-    background-position: -75px -75px;
-  }
-
-  .square7 {
-    background-position: -150px -75px;
-  }
-
-  .square8 {
-    background-position: -225px -75px;
-  }
-
-  .square9 {
-    background-position: 0 -150px;
-  }
-
-  .square10 {
-    background-position: -75px -150px;
-  }
-
-  .square11 {
-    background-position: -150px -150px;
-  }
-
-  .square12 {
-    background-position: -225px -150px;
-  }
-
-  .square13 {
-    background-position: 0 -225px;
-  }
-
-  .square14 {
-    background-position: -75px -225px;
-  }
-
-  .square15 {
-    background-position: -150px -225px;
-  }
-
-  .square16 {
-    background: white;
-    cursor: default;
+  .cell {
+    border: 2px solid white;
+    width: 80px;
+    height: 80px;
+    position: relative;
+    order: 0;
   }
 }
 

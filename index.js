@@ -1,79 +1,96 @@
-let tryCount = 0;
-let continuing = true;
+let tries = 0;
+const cells = document.querySelectorAll(".cell");
 
-const swapSquares = (sq1, sq2) => {
-  [
-    document.getElementById(sq1).className,
-    document.getElementById(sq2).className,
-  ] = [
-    document.getElementById(sq2).className,
-    document.getElementById(sq1).className,
-  ];
-  isWon();
-};
-const isWon = () => {
-  let count = 1;
-  for (let row = 1; row <= mode; row++) {
-    for (let column = 1; column <= mode; column++) {
+let draggedCell = null;
+let draggedEndCell = null;
+
+let img1 = null;
+let img2 = null;
+cells.forEach((cell, i) => {
+  cell.addEventListener("dragstart", () => {
+    draggedCell = cell;
+    setTimeout(() => {
+      cell.classList.add("dragging");
+    }, 0);
+  });
+
+  cell.addEventListener("dragend", () => {
+    draggedEndCell = cell.id;
+    if (img1.outerHTML.split(".")[0].slice(-1) !== draggedEndCell.slice(-1)) {
+      draggedCell.appendChild(img1);
+      cell.appendChild(img2);
+      document.getElementById("msg").innerHTML = `Wrong move, Try again!`;
+      setTimeout(() => {
+        document.getElementById("msg").innerText = "";
+      }, 2500);
+    }
+    draggedCell = null;
+    cell.classList.remove("dragging");
+  });
+
+  cell.addEventListener("dragover", (e) => {
+    e.preventDefault();
+  });
+
+  cell.addEventListener("dragenter", (e) => {
+    e.preventDefault();
+    cell.classList.add("hovered");
+  });
+
+  cell.addEventListener("dragleave", () => {
+    cell.classList.remove("hovered");
+  });
+
+  cell.addEventListener("drop", () => {
+    tries++;
+    if (draggedCell !== null) {
+      img1 = draggedCell.querySelector("img");
+      img2 = cell.querySelector("img");
+
+      if (img1 !== img2) {
+        draggedCell.appendChild(img2);
+        cell.appendChild(img1);
+      } else {
+        alert("Can't swap");
+      }
+    } else {
+      alert("Can't drop here!");
+    }
+
+    let count = 0;
+    document.querySelectorAll(".cell").forEach((cell, i) => {
+      // console.log(`imgX3/${i + 1}.png`);
+      // console.log(cell.querySelector("img").getAttribute("src"));
       if (
-        document.getElementById(`img_${row}${column}`).className ===
-        `square${count}`
+        cell.querySelector("img").getAttribute("src") ===
+        `imgX${mode}/${i + 1}.png`
       ) {
         count++;
-      } else {
-        break;
+        // console.log("hi");
       }
-    }
-    if (count === mode * mode + 1) {
+    });
+    if (count === mode * mode) {
       document.getElementById(
         "msg"
-      ).innerHTML = `You have won <br> in ${tryCount} tries`;
+      ).innerText = `You have won in ${tries} tries`;
       tryCount = 0;
+      console.log(`pass in ${tries}`);
     }
-  }
-};
-
-const onSquare = (row, column) => {
-  document.getElementById("msg").innerHTML = "";
-  tryCount++;
-  if (
-    document.getElementById(`img_${row}${column}`).className !==
-    `square${mode * mode}`
-  ) {
-    const adjacentSquares = [
-      { row: row, column: column - 1 },
-      { row: row, column: column + 1 },
-      { row: row - 1, column: column },
-      { row: row + 1, column: column },
-    ];
-    for (const { row: adjRow, column: adjCol } of adjacentSquares) {
-      if (adjRow >= 1 && adjRow <= mode && adjCol >= 1 && adjCol <= mode) {
-        const adjacentSquare = document.getElementById(
-          `img_${adjRow}${adjCol}`
-        );
-        if (adjacentSquare.className === `square${mode * mode}`) {
-          swapSquares(`img_${row}${column}`, `img_${adjRow}${adjCol}`);
-          return;
-        }
-      }
+  });
+});
+function shuffleImages() {
+  document.getElementById("msg").innerText = "";
+  const cells = document.querySelectorAll(".cell");
+  cells.forEach((cell) => {
+    let randomIndex = Math.floor(Math.random() * cells.length);
+    let randomCell = cells[randomIndex];
+    let img1 = cell.querySelector("img");
+    let img2 = randomCell.querySelector("img");
+    if (img1 !== img2) {
+      cell.appendChild(img2);
+      randomCell.appendChild(img1);
     }
-  }
-};
-
-const onReset = () => {
-  document.getElementById("msg").innerHTML = "";
-  tryCount = 0;
-  for (let row = 1; row <= mode; row++) {
-    for (let column = 1; column <= mode; column++) {
-      let row2 = Math.floor(Math.random() * mode + 1);
-      let column2 = Math.floor(Math.random() * mode + 1);
-      swapSquares(`img_${row}${column}`, `img_${row2}${column2}`);
-    }
-  }
-};
+  });
+}
 
 // onReset();
-
-const onMode = (m) => {
-  mode = m;
-};
