@@ -61,6 +61,7 @@ cells.forEach((cell, i) => {
     document.querySelectorAll(".cell").forEach((cell, i) => {
       // console.log(`imgX3/${i + 1}.png`);
       // console.log(cell.querySelector("img").getAttribute("src"));
+
       if (
         cell.querySelector("img").getAttribute("src") ===
         `imgX${mode}/${i + 1}.png`
@@ -80,6 +81,7 @@ cells.forEach((cell, i) => {
 });
 cells.forEach((cell, i) => {
   cell.addEventListener("touchstart", (e) => {
+    console.log("hiii");
     draggedCell = cell;
     setTimeout(() => {
       cell.classList.add("dragging");
@@ -88,14 +90,14 @@ cells.forEach((cell, i) => {
 
   cell.addEventListener("touchend", (e) => {
     draggedEndCell = cell.id;
-    if (img1.outerHTML.split(".")[0].slice(-1) !== draggedEndCell.slice(-1)) {
-      draggedCell.appendChild(img1);
-      cell.appendChild(img2);
-      document.getElementById("msg").innerHTML = `Wrong move, Try again!`;
-      setTimeout(() => {
-        document.getElementById("msg").innerText = "";
-      }, 2500);
-    }
+    // if (img1.outerHTML.split(".")[0].slice(-1) !== draggedEndCell.slice(-1)) {
+    //   draggedCell.appendChild(img1);
+    //   cell.appendChild(img2);
+    //   document.getElementById("msg").innerHTML = `Wrong move, Try again!`;
+    //   setTimeout(() => {
+    //     document.getElementById("msg").innerText = "";
+    //   }, 2500);
+    // }
     draggedCell = null;
     cell.classList.remove("dragging");
   });
@@ -129,25 +131,22 @@ cells.forEach((cell, i) => {
       alert("Can't drop here!");
     }
 
-    let count = 0;
-    document.querySelectorAll(".cell").forEach((cell, i) => {
-      // console.log(`imgX3/${i + 1}.png`);
-      // console.log(cell.querySelector("img").getAttribute("src"));
-      if (
-        cell.querySelector("img").getAttribute("src") ===
-        `imgX${mode}/${i + 1}.png`
-      ) {
-        count++;
-        // console.log("hi");
-      }
-    });
-    if (count === mode * mode) {
-      document.getElementById(
-        "msg"
-      ).innerText = `You have won in ${tries} tries`;
-      tryCount = 0;
-      console.log(`pass in ${tries}`);
-    }
+    // let count = 0;
+    // document.querySelectorAll(".cell").forEach((cell, i) => {
+    //   // console.log(`imgX3/${i + 1}.png`);
+    //   // console.log(cell.querySelector("img").getAttribute("src"));
+    //   const img = cell.querySelector("img");
+    //   if (img && img.getAttribute("src") === `imgX${mode}/${i + 1}.png`) {
+    //     count++;
+    //   }
+    // });
+    // if (count === mode * mode) {
+    //   document.getElementById(
+    //     "msg"
+    //   ).innerText = `You have won in ${tries} tries`;
+    //   tryCount = 0;
+    //   console.log(`pass in ${tries}`);
+    // }
   });
 });
 
